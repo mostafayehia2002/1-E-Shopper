@@ -1,0 +1,441 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    direction: ltr !important;
+    background-color: #ffffff !important;
+}
+:root {
+
+    --color: #0d6efd;
+    --main-color: #242424;
+    --font-color: #323232;
+    --background: #ffffff;
+    --header-size: 25px;
+    --text-size: 14px;
+    --icon-size: 16px;
+    --border-redius: 5px;
+    --padding-size: 10px;
+}
+
+/*style of links*/
+a{
+    color: var(--font-color);
+    font-size: 15px !important;
+    text-decoration: none !important;
+}
+i {
+    font-size: 16px !important;
+}
+ol,
+ul {
+    list-style: none !important;
+    text-transform: capitalize !important;
+    padding-left: 0 !important;
+}
+a:hover{
+    text-decoration: none;
+    color:#000;
+}
+/************************/
+.message{
+    height: 40px;
+    width: 96%;
+    text-align: center;
+    padding: 10px;
+    margin: 24px auto;
+}
+.success-massage{
+    color: white;
+    background-color: black;
+}
+/**/
+
+/*start dashboard style*/
+.Dashboard {
+    height: 100vh;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background-color: rgb(251, 250, 250);
+}
+.Dashboard.hidden {
+    left: -250px;
+    transition: all .3s;
+    transition-timing-function: ease-in;
+}
+.container1{
+    height: auto;
+    width: 100%;
+    padding-left: 250px;
+    margin: auto;
+
+}
+.container1.show {
+    transition: all .3s;
+    transition-timing-function: ease-in;
+    padding-left: 0;
+}
+.page-navbar {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: rgb(251, 250, 250);
+}
+.page-address,
+.notification {
+    padding: 20px;
+    line-height: 10px;
+}
+.page-address h3 {
+    font-size: 25px;
+    font-weight: bolder;
+}
+.fa-message,
+.fa-bell {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #eee;
+}
+.setting .fa-bars{
+    color: white;
+    padding: 11px;
+    text-align: center;
+    background-color: #242424;
+    border-radius: 5px;
+}
+.numberOfNotify {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 5px;
+    top: -18px;
+    line-height: 20px;
+    text-align: center;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+}
+/*logo style*/
+.logo {
+    padding-top: 20px;
+    text-align:center;
+    font-size: 22px;
+    font-weight: bolder;
+    margin-bottom: 50px;
+}
+.logo i {
+    padding-right: 5px;
+    font-size: 20px !important;
+}
+
+/*links style*/
+.links {
+    width: 100%;
+    height:70%;
+    overflow-y: auto;
+}
+
+.links li{
+    width: 70%;
+    display: inline-block;
+    padding:15px 0;
+    text-align: start;
+}
+.links li i{
+    padding-right: 10px;
+    text-align: start;
+}
+.links a{
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: start;
+}
+
+
+/***active class***/
+.links a.active {
+    background-color: var(--main-color);
+    color: white;
+    text-decoration: none;
+}
+
+/*user style*/
+.user {
+    margin: auto;
+    align-self: flex-end;
+}
+.user-img img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.user-name span {
+    padding: 10px;
+    margin: 5px;
+}
+
+.user-name .name {
+    color: black;
+    font-weight: bold;
+}
+.user-name .phone a {
+    padding: 5px;
+    font-size: 16px;
+    color: rgb(119, 118, 118);
+
+}
+/**/
+.admin-setting{
+    padding: 10px;
+    margin-top: 5px;
+
+}
+.admin-setting .edit-profile,
+.admin-setting .logout{
+    padding:10px;
+    border: #dedddd solid 2px;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.admin-setting .edit-profile{
+    padding:12px 8px;
+    text-align: center;
+}
+.admin-setting .edit-profile .fa-gear{
+    text-align: center;
+}
+.admin-setting .logout{
+    display: inline-block;
+}
+.logout button{
+    border: none;
+    background-color: rgb(251, 250, 250);
+    text-align: center;
+}
+
+/*end style of user*/
+@media (max-width:991px) {
+    .container1 {
+        padding-left: 0;
+    }
+    .Dashboard {
+        width: 250px;
+        left: -250px;
+    }
+    .Dashboard.hidden {
+        left: 0;
+        top: 60px;
+    }
+    .page-navbar {
+        width: 100%;
+    }
+
+    .page-address {
+        white-space: nowrap;
+        line-height: 20px;
+        font-size: 16px;
+    }
+
+    .page-address h3 {
+        font-size: 18px;
+    }
+
+    .notification {
+        padding-left: 10px;
+        white-space: nowrap;
+
+    }
+
+}
+.alert-danger{
+    height: 40px;
+    padding:10px
+}
+/*********login********/
+.login{
+    width:400px;
+    margin: 150px auto;
+    padding:10px;
+    border:2px solid rgb(0,0,0,90%);
+    border-radius: 5px;
+}
+.login .header{
+    padding:30px 5px;
+    text-align: center;
+}
+.username,
+.password,
+.login-submit{
+    width:92%;
+    position: relative;
+    margin:18px auto;
+}
+.username i,
+.password i{
+    position: absolute;
+    top:42px;
+    left:5px;
+    padding: 2px;
+}
+input{
+    height:40px;
+    width:100%;
+    padding-left: 30px;
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: #eee;
+}
+.login-submit input[type="submit"]{
+    width: 100%;
+    color:white;
+    background-color: black;
+    text-align: center;
+    padding-left: 0;
+}
+
+/*************** add user*****************/
+
+.all-fields {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items: center;
+
+}
+
+.input-field {
+    width: 50%;
+    padding: 20px 20px;
+}
+
+.input-field label {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.input-field input{
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    background-color: #eee;
+    border-bottom: 2px solid var(--main-color);
+
+}
+.file {
+    width: 100%;
+}
+
+.file #userPhoto {
+    border: none;
+    background-color: white;
+}
+.photo {
+    display: none;
+    margin: auto;
+    border-radius: 30px;
+}
+.photo.show {
+    display: block;
+}
+
+.submit{
+    width: 100%;
+}
+ .submit input[type="submit"] {
+    border: none;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    color: white;
+}
+
+/*.submit input[type="submit"]:hover {*/
+/*    color: var(--color);*/
+/*}*/
+@media (max-width:767px) {
+    .container1 {
+        width: 100%;
+        padding-left: 0;
+    }
+    .all-fields{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+    .input-field{
+        padding: 10px;
+        width: 100%;
+    }
+    .input-field input{
+        width: 100%;
+    }
+    input[type="submit"] {
+        width: 100% !important;
+        margin-left: 0;
+    }
+}
+
+
+/*************index style*************/
+.page-boxes{
+    width: 100%;
+    padding: 40px 20px;
+    display: grid;
+     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap: 30px;
+}
+.page-boxes .box{
+text-align: center;
+    padding:10px;
+background-color: rgb(251, 250, 250);
+    border-radius: 5px;
+}
+.page-boxes .box .box-icon{
+    font-size: 50px;
+    padding:20px;
+}
+.page-boxes .box .box-count{
+    font-size: 30px;
+}
+.page-boxes .box .box-name{
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+/****************show********************/
+.btn{
+    border:none;
+}
+.control-delete{
+
+    background-color: red;
+}
+
+.control-delete:hover{
+
+    background-color: red;
+}
