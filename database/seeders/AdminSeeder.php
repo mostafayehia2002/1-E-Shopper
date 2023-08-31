@@ -16,11 +16,16 @@ class AdminSeeder extends Seeder
     {
         //
         Admin::create([
-
             'name'=>'mostafa',
             'password'=>'12345678',
             'email'=>'gad993813@gmail.com',
             'status'=>'1',
+        ]);
+        Admin::create([
+            'name'=>'teefa',
+            'password'=>'12345678',
+            'email'=>'teefa993813@gmail.com',
+            'status'=>'0',
         ]);
     }
 }

@@ -34,12 +34,13 @@ let inputUpload = document.getElementById("userPhoto");
 /****************/
 let message=document.querySelectorAll('.message');
 if( message){
+
     setTimeout(()=>{
         message.forEach((e)=>{
             e.style.display="none";
         })
 
-    },2000)
+    },3000)
 }
 
 new DataTable('#example');

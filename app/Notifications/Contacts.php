@@ -7,30 +7,42 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class Orders extends Notification
+class Contacts extends Notification
 {
     use Queueable;
-
-public  $order_id;
+    public $message_id;
     public function __construct($id)
     {
         //
-        $this->order_id=$id;
+        $this->message_id=$id;
     }
 
-
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @return array<int, string>
+     */
     public function via(object $notifiable): array
     {
         return ['database'];
     }
 
+    /**
+     * Get the mail representation of the notification.
+     */
 
+
+    /**
+     * Get the array representation of the notification.
+     *
+     * @return array<string, mixed>
+     */
     public function toArray(object $notifiable): array
     {
         return [
             //
-            'order_id'=>$this->order_id,
-            'type'=>'order'
+            'message_id'=>$this->message_id,
+            'type'=>'message'
         ];
     }
 }

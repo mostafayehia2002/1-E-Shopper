@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminAuth\RegisteredUserController;
 use App\Http\Controllers\AdminAuth\VerifyEmailController;
 use App\Http\Controllers\AdminOperationsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -82,8 +83,14 @@ Route::middleware('auth:admins')->group(function () {
                 //
                 Route::get('show_users','showUsers')->name('showUsers');
                 Route::get('show_admins', 'showAdmins')->name('showAdmins');
+                Route::get('show_contacts','showContacts')->name('showContacts');
+
                 //
             });
+    Route::controller(ContactUsController::class)->group(function (){
+       Route::post('read_message','markAsRead')->name('markMessageAsRead');
+       Route::get('delete_message/{message}/{user}','deleteMessage')->name('deleteMessage');
+    });
 //
         });
 

@@ -22,13 +22,14 @@ class OrderController extends Controller
         return response()->json(['user_id'=>$user_id,'order_id'=>$order_id]);
     }
     //
+
+
     public function orderDone($order,$user)
     {
       Order::withoutTrashed()->where('id',$order)->forceDelete();
         DB::table('notifications')
             ->where('data->order_id->id', $order)
             ->where('notifiable_id', $user)->delete();
-
         return  redirect()->back()->with('order-done','The order has been sent successfully');
     }
 

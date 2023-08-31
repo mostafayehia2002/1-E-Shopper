@@ -36,7 +36,7 @@ class ProductController extends Controller
             'category_id'=>$r->product_category,
         ]);
 
-        return redirect()->back()->with('success-add-product','successfully Added Product');
+        return redirect()->back()->with('success-add-product','Successfully Added Product');
     }
 
 
@@ -69,7 +69,7 @@ class ProductController extends Controller
            'category_id'=>$r->product_category,
    ]);
 
-      return redirect()->route('admin.showProducts')->with('success-update-product','successfully Updated Product');
+      return redirect()->route('admin.showProducts')->with('success-update-product','Successfully Updated Product');
 
     }
     public function deleteProduct($id){
@@ -77,6 +77,6 @@ class ProductController extends Controller
        $img=$data->product_photo;
         Storage::disk('admin')->delete('product_img/'.$img);
         $data::where('id',$id)->delete();
-        return redirect()->back()->with('success-delete-product','successfully Deleted Product');
+        return redirect()->back()->with('success-delete-product','Successfully Deleted Product');
     }
 }

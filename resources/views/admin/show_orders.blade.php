@@ -7,6 +7,11 @@
 @endsection
 
 @section('content')
+    <style>
+        .visit{
+            background-color: #2a2a2a;
+        }
+    </style>
     <div class="container" style="overflow-x: auto">
         @if(session('order-done'))
             <div  class="success-massage message">{{session()->get('order-done')}}</div>
@@ -34,10 +39,11 @@
                     <td> {{$order->address}}</td>
                     <td> {{$order->total_price}}</td>
                     <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$order->id}}">
-                            <i class="fa-sharp fa-solid fa-eye see-order" user-id="{{$order->user_id}}" order-id="{{$order->id}}"></i>
+                            <i class="fa-sharp fa-solid fa-eye see-order" user-id="{{$order->user_id}}" order-id="{{$order->id}}" ></i>
                         </button>
                      </td>
-                    <td><a href="{{route('admin.orderDone',['order' => $order->id, 'user' => $order->user_id])}}" class="btn btn-primary" onclick="return confirm('Are You Sure To Delete Order')" ><i class="fa-solid fa-check"></i></a></td>
+
+                    <td><a href="{{route('admin.orderDone',['order' => $order->id, 'user' => $order->user_id])}}" class="btn btn-primary" onclick="return confirm('Are You Sure To Delete Order')"  ><i class="fa-solid fa-check"></i></a></td>
                         <!-- Modal -->
                         <div class="modal fade" id="staticBackdrop{{$order->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable">

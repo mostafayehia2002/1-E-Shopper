@@ -118,7 +118,7 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <!-- Template Javascript -->
-    <script src="{{asset('js/main.js')}}" > </script>
+    <script src="{{asset('js/user.js')}}" > </script>
 <script>
     document.addEventListener('click',function (e) {
         if(e.target.classList.contains('addToCart')){

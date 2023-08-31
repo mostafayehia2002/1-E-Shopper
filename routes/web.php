@@ -22,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(UserInterfaceController::class)->group(function (){
   Route::get('/','index')->name('homePage');
-
     Route::post('add_to_cart','addToCart')->name('addToCart');
-
     Route::get('show_cart','showCart')->name('showCart');
     Route::post('search','searchProducts')->name('searchProducts');
     Route::get('category_products/{id}','showCategory')->name('showCategory');
@@ -32,8 +30,9 @@ Route::controller(UserInterfaceController::class)->group(function (){
     Route::post('/update-quantity','updateCart')->name('updateCart');
     Route::post('success-order','successBuying')->name('successOrder')->middleware(['auth', 'verified']);
     Route::get('shop','showShop')->name('showShop');
+    Route::get('contact_us','showContactUs')->name('showContactUs');
+    Route::post('store_message','storeMessage')->name('storeMessage');
 });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

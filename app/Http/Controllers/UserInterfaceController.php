@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
+use App\Notifications\Contacts;
 use App\Notifications\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,8 +22,8 @@ class UserInterfaceController extends Controller
     }
     public function addToCart(Request $r){
          $id=$r->id;
-       $product=Product::find($id);
-      $cart=session()->get('cart');
+        $product=Product::find($id);
+        $cart=session()->get('cart');
       if(isset($cart[$id])){
           $cart[$id]['quantity']++;
       }else{
@@ -102,5 +105,29 @@ public function successBuying(Request $r){
         $products=Product::all();
         return view('shop',compact('products'));
     }
-}
+    public function showContactUs(){
 
+        return view('contact_us');
+    }
+    public function storeMessage(Request $r){
+        if(!Auth::guard('web')->check()){
+            return view('auth.login');
+        }else{
+        $r->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'subject'=>'required',
+            'message'=>'required',
+        ]);
+        Contact::create([
+            'user_id'=>Auth::user()->id,
+            'name'=>$r->name,
+            'email'=>$r->email,
+            'subject'=>$r->subject,
+            'message'=>$r->message,
+        ]);
+          $id=Contact::where('user_id',Auth::user()->id)->get('id')->last();
+           Notification::send( Auth::user() ,new Contacts($id));
+           return redirect()->back();
+    }}
+}

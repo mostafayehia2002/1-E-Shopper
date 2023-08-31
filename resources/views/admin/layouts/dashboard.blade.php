@@ -1,8 +1,11 @@
 @php
    use \Illuminate\Support\Facades\DB;
 
-  $count= DB::table('notifications')->where('read_at',NULL)->get();
-    $count = count($count);
+  $order= DB::table('notifications')->where('read_at',NULL)->where('data->type','order')->get();
+    $order = count($order);
+
+    $message= DB::table('notifications')->where('read_at',NULL)->where('data->type','message')->get();
+    $message = count($message);
  @endphp
 
 <!DOCTYPE html>
@@ -14,7 +17,7 @@
     <link rel="stylesheet" href={{asset("css/datatables.min.css")}}>
     <link rel="stylesheet" href={{asset("css/bootstrap.min.css")}}>
     <link rel="stylesheet" href={{asset("css/all.min.css")}}>
-    <link rel="stylesheet" href={{asset("css/style.css")}}>
+    <link rel="stylesheet" href={{asset("css/admin.css")}}>
     <title>@yield('title')</title>
     <style>
         .container{
@@ -90,16 +93,19 @@
             <p>
             <h3>@yield('page address')</h3>
             </p>
-
         </div>
         <div class="notification">
-            <a href="#" >
+            <a href="{{route('admin.showContacts')}}" style=" position: relative;">
                 <i class="fa-solid fa-message"></i>
+                @if($message>0)
+                    <div class="numberOfNotify">{{$message}}</div>
+                @endif
             </a>
+
             <a href="{{route('admin.showOrders')}}" style=" position: relative;">
                 <i class="fa-sharp fa-solid fa-bell"></i>
-                @if($count>0)
-                <div class="numberOfNotify">{{$count}}</div>
+                @if($order>0)
+                <div class="numberOfNotify">{{$order}}</div>
                 @endif
             </a>
 

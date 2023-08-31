@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -42,4 +43,9 @@ class AdminOperationsController extends Controller
 //
     }
 
+
+    public function showContacts(){
+        $messages=Contact::all();
+        return view('admin.show_contacts',compact('messages'));
+    }
 }

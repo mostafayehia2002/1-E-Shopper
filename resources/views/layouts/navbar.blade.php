@@ -138,7 +138,7 @@ use App\Models\Category;
                         <a href="{{route('homePage')}}" class="nav-item nav-link active">Home</a>
                         <a href="{{route('showShop')}}" class="nav-item nav-link active">Shop</a>
                         <a href="{{route('showCart')}}" class="nav-item nav-link">Shopping Cart</a>
-                        <a href="" class="nav-item nav-link">Contact</a>
+                        <a href="{{route('showContactUs')}}" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
                         <a href=" " class="nav-item nav-link">Profile</a>
@@ -200,6 +200,6 @@ use App\Models\Category;
 <script src="{{asset('lib/easing/easing.min.js')}}"></script>
 <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
 <!-- Template Javascript -->
-<script src="{{asset('js/main.js')}}"></script>
+<script src="{{asset('js/user.js')}}"></script>
 </body>
 </html>

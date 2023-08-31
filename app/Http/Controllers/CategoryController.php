@@ -19,7 +19,7 @@ class CategoryController extends Controller
         Category::create([
             'category_name'=>$r->category,
         ]);
-        return  redirect()->back()->with('success-add-category','successfully Added Category');
+        return  redirect()->back()->with('success-add-category','Successfully Added Category');
 
     }
     public function editCategory($id){
@@ -35,11 +35,11 @@ class CategoryController extends Controller
           Category::where('id',$id)->update([
             'category_name'=>$r->category,
         ]);
-        return  redirect()->route('admin.showCategories')->with('success-update-category','successfully Updated Category');
+        return  redirect()->route('admin.showCategories')->with('success-update-category','Successfully Updated Category');
     }
 
     public function deleteCategory($id){
         Category::find($id)->delete();
-        return  redirect()->route('admin.showCategories')->with('success-delete-category','successfully Deleted Category');
+        return  redirect()->route('admin.showCategories')->with('success-delete-category','Successfully Deleted Category');
     }
 }

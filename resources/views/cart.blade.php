@@ -72,13 +72,13 @@ $total=0;
                             <div class="d-flex justify-content-between mb-3 pt-1">
                                 <h6 class="font-weight-medium">ِAddress</h6>
                                 <label>
-                                    <input type="text" name="address" required style="border:1px solid #eee;outline: none ;width: 300px; padding:5px;" >
+                                    <input type="text" name="address" required style="border:1px solid #eee;outline: none ;width: 300px; padding:5px;"  value="{{old('address')}}">
                                 </label>
                             </div>
                             <div class="d-flex justify-content-between mb-3 pt-1">
                                 <h6 class="font-weight-medium">ِPhone Number</h6>
                                 <label>
-                                    <input type="tel" name="phone" required style="border:1px solid #eee;outline: none ;width: 300px; padding:5px;" >
+                                    <input type="tel" name="phone" required style="border:1px solid #eee;outline: none ;width: 300px; padding:5px;"  value="{{old('phone')}}">
                                 </label>
                             </div>
                         </div>
