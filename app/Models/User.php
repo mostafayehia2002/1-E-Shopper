@@ -10,6 +10,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @method static orderBy(string $string, string $string1)
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;

@@ -1,3 +1,16 @@
+@php
+   use \Illuminate\Support\Facades\DB;
+      function read($id){
+      $data= DB::table('notifications')->where('data->message_id->id',$id)
+      ->where('data->type','message')
+        ->where('read_at','!=',NULL)
+        ->first();
+
+          return  !empty($data)? true:false;
+        }
+
+@endphp
+
 @extends('admin.layouts.dashboard')
 @section('title')
     show contactus
@@ -6,6 +19,14 @@
     Show All Message
 @endsection
 @section('content')
+    <style>
+        .read{
+            background-color: #2a2a2a;
+        }
+        .btn-primary.read:hover{
+            background-color: #2a2a2a;
+        }
+    </style>
     <div class="container" style="overflow-x: auto">
         @if(session('message-done'))
             <div  class="success-massage message">{{session()->get('message-done')}}</div>
@@ -24,13 +45,18 @@
             <tbody>
             @foreach($messages as $message)
                 <tr>
-                    <td>{{$message->id}}</td>
+                    <td>{{$loop->index+1}}</td>
                     <td>{{$message->name}}</td>
                     <td>{{$message->email}}</td>
                     <td>{{$message->subject}}</td>
-                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$message->id}}">
-                            <i class="fa-sharp fa-solid fa-eye see-message" message-id="{{$message->id}}" user-id="{{$message->user_id}}"></i>
+
+                    <td>
+                        <button type="button" class="btn btn-primary see-message {{read($message->id)=='true'?'read':''}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$message->id}}"
+                                message-id="{{$message->id}}" user-id="{{$message->user_id}}"
+                        >
+                            <i class="fa-sharp fa-solid fa-eye"></i>
                         </button>
+
                     </td>
                     <td>
                         <a href="{{route('admin.deleteMessage',['message' => $message->id, 'user' =>$message->user_id])}}" class="control-delete btn btn-primary"  onclick="return confirm('Are You Sure To Delete Message')"><span class="fa-solid fa-trash"></span></a>
@@ -80,6 +106,7 @@
     }
     });
     }
+
     </script>
 @endsection
 

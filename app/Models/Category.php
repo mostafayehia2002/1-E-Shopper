@@ -11,6 +11,8 @@ class Category extends Model
     use HasFactory;
     protected $guarded=[];
 
+
+
     public function  products():hasMany
     {
         return $this->hasMany(Product::class,'category_id');

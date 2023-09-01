@@ -31,7 +31,7 @@
             <tbody>
             @foreach($products as $product)
                 <tr>
-                    <td>{{$product->id}}</td>
+                    <td>{{$loop->index+1}}</td>
                     <td> <img src="{{asset('admin/product_img/'.$product->product_photo)}}" alt="no photo" style="width: 40px;height: 40px;border-radius:50%"></td>
                     <td>{{$product->product_name}}</td>
                     <td>{{$product->product_price}}</td>

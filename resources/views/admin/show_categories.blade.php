@@ -26,7 +26,7 @@
             <tbody>
             @foreach($categories as $c)
                 <tr>
-                    <td>{{$c->id}}</td>
+                    <td>{{$loop->index+1}}</td>
                     <td>{{$c->category_name}}</td>
                     <td>
                         <a href="{{route('admin.editCategory',$c->id)}}" class="control-edit btn btn-primary"><span class="fa-solid fa-pen-to-square"></span></a>

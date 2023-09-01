@@ -1,3 +1,13 @@
+@php
+    use \Illuminate\Support\Facades\DB;
+       function read($id){
+       $data= DB::table('notifications')->where('data->order_id->id',$id)
+       ->where('data->type','order')
+         ->where('read_at','!=',NULL)
+         ->first();
+           return  !empty($data)? true:false;
+         }
+@endphp
 @extends('admin.layouts.dashboard')
 @section('title')
     show orders
@@ -8,7 +18,10 @@
 
 @section('content')
     <style>
-        .visit{
+        .read{
+            background-color: #2a2a2a;
+        }
+        .btn-primary.read:hover{
             background-color: #2a2a2a;
         }
     </style>
@@ -32,14 +45,16 @@
             <tbody>
             @foreach($orders as $order)
                 <tr>
-                    <td> {{$order->id}}</td>
+                    <td>{{$loop->index+1}}</td>
                     <td> {{$order->user->name}}</td>
                     <td> {{$order->user->email}}</td>
                     <td> {{$order->phone}}</td>
                     <td> {{$order->address}}</td>
                     <td> {{$order->total_price}}</td>
-                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$order->id}}">
-                            <i class="fa-sharp fa-solid fa-eye see-order" user-id="{{$order->user_id}}" order-id="{{$order->id}}" ></i>
+                    <td><button type="button" class="btn btn-primary see-order {{read($order->id)=='true'?'read':''}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$order->id}}"
+                                user-id="{{$order->user_id}}" order-id="{{$order->id}}"
+                        >
+                            <i class="fa-sharp fa-solid fa-eye"></i>
                         </button>
                      </td>
 

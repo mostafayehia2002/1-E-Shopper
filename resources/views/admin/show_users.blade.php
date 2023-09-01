@@ -21,7 +21,7 @@
             <tbody>
             @foreach($users as $u)
                 <tr>
-                    <td>{{$u->id}}</td>
+                    <td>{{$loop->index+1}}</td>
                     <td> <img src="{{asset('admin/profile_img/profile.jpg')}}" alt="no photo" style="width: 40px;height: 40px;border-radius:50%"></td>
                     <td>{{$u->name}}</td>
                     <td>{{$u->email}}</td>
