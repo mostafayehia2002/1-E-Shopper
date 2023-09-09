@@ -28,7 +28,28 @@
                 </div>
             @endforeach
         </div>
-
     </div>
     <!-- Products End -->
+    <script>
+        document.addEventListener('click',function (e) {
+            if(e.target.classList.contains('addToCart')){
+                let id=  e.target.getAttribute('data-id');
+                addToCart(id);
+            }
+        });
+        function addToCart(id) {
+            $.ajax({
+                url:'/add_to_cart',
+                method: 'POST',
+                data: {
+                    _token: "{{csrf_token()}}",
+                    id:id,
+                },
+                success: function(response) {
+                    // يمكنك إضافة التفاعلات الإضافية هنا بعد الاستجابة من الخادم
+                    window.location.reload();
+                }
+            });
+        }
+    </script>
 @endsection

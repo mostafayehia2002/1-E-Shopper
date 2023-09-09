@@ -7,15 +7,14 @@
 @endsection
 @section('content')
     <div class="container" style="overflow-x: auto">
-
         @if(session('success-delete-product'))
             <div  class="success-massage message">{{session()->get('success-delete-product')}}</div>
-        @endif
+         @endif
 
             @if(session('success-update-product'))
                 <div  class="success-massage message">{{session()->get('success-update-product')}}</div>
             @endif
-        <table id="example" class="table table-striped" style="width:100%">
+           <table id="example" class="table table-striped" style="width:100%">
             <thead>
             <tr>
                 <th>ID</th>
