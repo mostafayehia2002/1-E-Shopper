@@ -62,10 +62,10 @@ class AdminController extends Controller
         }
         $r->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:admins,email,' . $id,
             'password' => 'required',
-        ]);
 
+        ]);
         Admin::where('id', $id)->update([
             'name' => $r->name,
             'email' => $r->email,

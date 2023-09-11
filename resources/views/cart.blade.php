@@ -98,7 +98,6 @@ $total=0;
         </div>
      {{--end Cart--}}
 <script>
-
         document.addEventListener('click',function (e) {
         let count=1;
         if(e.target.classList.contains('increase-button')){
